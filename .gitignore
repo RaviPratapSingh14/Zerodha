@@ -1,0 +1,18 @@
+# Node modules
+frontend/node_modules/
+dashboard/node_modules/
+backend/node_modules/
+
+# Build files
+frontend/build/
+dashboard/build/
+backend/dist/
+
+# Environment/config
+.env
+.env.local
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-error.log*

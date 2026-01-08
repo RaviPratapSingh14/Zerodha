@@ -1,17 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import GeneralContext from "./GeneralContext";
 
 const Orders = () => {
-  return (
-    <div className="orders">
-      <div className="no-orders">
-        <p>You haven't placed any orders today</p>
+  const { orders = [] } = useContext(GeneralContext);
 
-        <Link to={"/"} className="btn">
-          Get started
-        </Link>
-      </div>
-    </div>
+  if (!orders.length) return <p>No Orders yet</p>;
+
+  return (
+    <>
+      <h3>Orders ({orders.length})</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Stock</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Mode</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((o, i) => (
+            <tr key={i}>
+              <td>{o.name}</td>
+              <td>{o.qty}</td>
+              <td>{o.price}</td>
+              <td>{o.mode}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 };
 
